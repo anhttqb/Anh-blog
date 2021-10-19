@@ -10,8 +10,10 @@ from forms import CreatePostForm, RegisterForm, LogInForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 import os
+from boto.s3.connection import S3Connection
 
 app = Flask(__name__)
+s3 = S3Connection(os.environ["SECRET_KEY"])
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
